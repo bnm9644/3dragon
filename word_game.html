@@ -44,30 +44,31 @@
       scoreNum.innerHTML = Number(score);          
 
   //시간 설정
-      var tim = 4;
-      var timer = document.querySelector('.timee');
-      timer.innerHTML = tim;
+    var tim = 4;
+    var timer = document.querySelector('.timee');
+    timer.innerHTML = tim;
 
   var timerF = function() {
-          timer.innerHTML = tim;
+         
+     timer.innerHTML = tim;
 
-         if(tim === 0) {
-            if (window.confirm('GAME OVER')) { // 확인버튼 누를 때
-     location.href = "https://m.naver.com" // 23.1.5 Update
-            }
-            else // 취소버튼 누를 때
-            {
-                location.reload(); // 새로고침
-            }
-              score = 0;
-              scoreNum.innerHTML = Number(score);              
-              tim = 5;
-              clearInterval(clearIn); //변수 연결
-              
-         } else {
-              tim -=1;
-         }
-      }
+        if(tim === 0) {
+        
+          if (window.confirm('GAME OVER')) { // 확인버튼 누를 때
+              location.href = "https://m.naver.com" // 23.1.5 Update
+          }
+          else { // 취소버튼 누를 때 
+              location.reload(); // 새로고침
+          }
+            score = 0;
+            scoreNum.innerHTML = Number(score);              
+            tim = 5;
+            clearInterval(clearIn); //변수 연결
+            
+        } else {
+            tim -=1;
+        }
+    }
 
   var clearIn = setInterval(timerF, 1000); //clearInterval(변수) 
                                                //setInterval(변수)
@@ -85,30 +86,31 @@
   } else if(value.length !== 3) {
           
           if(score != 0) {          
-            score -= 1;
-            scoreNum.innerHTML = Number(score);
-            alert('3글자 불일치!');
-  } else {
-          	score = 0;
-            scoreNum.innerHTML = Number(score);
-            alert('3글자 불일치!');
+                    score -= 1;
+                    scoreNum.innerHTML = Number(score);
+                    alert('3글자 불일치!');
+          } else {
+                    score = 0;
+                    scoreNum.innerHTML = Number(score);
+                    alert('3글자 불일치!');
           }
 
   } else if(word[word.length - 1] !== value[0]) {
  
-  if(score != 0) {        
+          if(score != 0) {        
             score -= 1;
             scoreNum.innerHTML = Number(score);
             alert('끝말 불일치!');
-  } else {
-          	score = 0;
+          } else {
+            score = 0;
             scoreNum.innerHTML = Number(score);
             alert('끝말 불일치!');
           }
   
-        }
-        input.value = "";
-      };
+  }
+     input.value = "";
+  };
+
     </script>
   </body>
 </html>
