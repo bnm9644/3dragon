@@ -131,7 +131,123 @@
           }
           return total.value;
        }
+
+       function abs() {
+         if(total.value.length < 19) { // 자릿수 제한 - 19 
+              total.value = Math.abs(total.value);
+         }     
+         return total.value;
+       }
+     
+       function tenpow(){
+           if(total.value.length < 19) { // 자릿수 제한 - 19 
+              total.value = Math.pow(10,total.value);
+           }   
+           return total.value;
+       }
+
+       function twopow(){
+           if(total.value.length < 22) { // 자릿수 제한 - 22
+              total.value = Math.pow(2,total.value);
+           }
+           return total.value;
+       }
+
+       function pactorial() {
+          let result = 1;
+          for(let i=total.value; i>=1; i--) { 
+              result = result * i;
+              total.value = result;
+          }
+          return result;
+        }
+     
+        function boon() {
+            if(total.value.length < 19) { // 자릿수 제한 - 22 
+                total.value = 1/total.value;
+            } else {
+            	alert('자리수가 너무 큽니다.');
+                clean();
+            }
+            return total.value;
+        }
+     
+        function root() {
+            if(total.value.length < 19) { // 자릿수 제한 - 22
+                total.value = Math.sqrt(total.value);
+            } else {
+            	alert('자리수가 너무 큽니다.');
+                clean();
+            }
+            return total.value;
+        } 
+    
+        function jegob() {
+            total.value = Math.pow(total.value,2);
+            return total.value;
+        }
     </script>
-    </head>
-    </html>
-            
+</head>
+<body>
+  <table id = "table">
+  <tr>
+  	<td><input type="text" id="total" value = 0 style ="font-size:24px; font-weight:bold;"></td>
+  <tr>          
+    <tr>	
+    	<td>       
+            <input type = "button" style="width:45pt;height:45pt;font-size: 20px;font-weight:bold;" value = "tan" onclick = "tan()">
+            <input type = "button" style="width:45pt;height:45pt;font-size: 20px;font-weight:bold;" value = "sin" onclick = "sin()">
+            <input type = "button" style="width:45pt;height:45pt;font-size: 20px;font-weight:bold;" value = "cos" onclick = "cos()">
+            <input type = "button" style="width:45pt;height:45pt;font-size: 20px;font-weight:bold;" value = "abs" onclick = "abs()">
+            <input type = "button" style="width:45pt;height:45pt;font-size: 20px;font-weight:bold;" value = "!" onclick = "pactorial()">
+        </td>
+    </tr>
+    <tr>	
+    	<td>
+         <input type = 'button' style="width:45pt;height:45pt;font-size: 20px;font-weight:bold;" value = '1/n' onclick = "boon()">
+            <input type = 'button' style="width:45pt;height:45pt;font-size: 20px;font-weight:bold;" value = 'x²' onclick = "jegob()">
+            <input type = 'button' style="width:45pt;height:45pt;font-size: 20px;font-weight:bold;" value = '√' onclick = "root()">
+            <input type = 'button' style="width:45pt;height:45pt;font-size: 20px;font-weight:bold;" value = '10n' onclick = "tenpow()">
+            <input type = 'button' style="width:45pt;height:45pt;font-size: 20px;font-weight:bold;" value = '2n' onclick = "twopow()">
+        </td>
+    </tr>
+    <tr>	
+    	<td>
+         <input type = 'button' style="width:45pt;height:45pt;font-size: 20px;font-weight:bold;" value = 7 onclick = add(7)>
+            <input type = 'button' style="width:45pt;height:45pt;font-size: 20px;font-weight:bold;" value = 8 onclick = add(8)>
+            <input type = 'button' style="width:45pt;height:45pt;font-size: 20px;font-weight:bold;" value = 9 onclick = add(9)>
+            <input type = 'button' style="width:45pt;height:45pt;font-size: 20px;font-weight:bold;" value = 'X' onclick = "cal('*')">           
+            <input type = 'button' style="width:45pt;height:45pt;font-size: 20px;font-weight:bold;" value = 'CE' onclick = "ce()"> 
+        </td>
+    </tr>
+   <tr>	
+    	<td>        	
+            <input type = 'button' style="width:45pt;height:45pt;font-size: 20px;font-weight:bold;" value = 4 onclick = "add(4)">
+            <input type = 'button' style="width:45pt;height:45pt;font-size: 20px;font-weight:bold;" value = 5 onclick = "add(5)">
+            <input type = 'button' style="width:45pt;height:45pt;font-size: 20px;font-weight:bold;" value = 6 onclick = "add(6)">
+            <input type = 'button' style="width:45pt;height:45pt;font-size: 20px;font-weight:bold;" value = '-' onclick = "cal('-')">
+            <input type = "button" style="width:45pt;height:45pt;font-size: 20px;font-weight:bold;" value = "back" onclick = "backDo()">
+        </td>
+    </tr>
+    <tr>	
+    	<td>        	
+            <input type = 'button' style="width:45pt;height:45pt;font-size: 20px;font-weight:bold;" value = 1 onclick = "add(1)">
+            <input type = 'button' style="width:45pt;height:45pt;font-size: 20px;font-weight:bold;" value = 2 onclick = "add(2)">
+            <input type = 'button' style="width:45pt;height:45pt;font-size: 20px;font-weight:bold;" value = 3 onclick = "add(3)">
+            <input type = 'button' style="width:45pt;height:45pt;font-size: 20px;font-weight:bold;" value = '+' onclick = "cal('+')">
+         <input type = 'button' style="width:45pt;height:45pt;font-size: 20px;font-weight:bold;" value = '+/-' onclick = "plminus()">
+        </td>
+    </tr>
+    <tr>	
+    	<td>
+         <input type = 'button' style="width:45pt;height:45pt;font-size: 20px;font-weight:bold;" value = '/' onclick = "cal('/')">
+            <input type = 'button' style="width:45pt;height:45pt;font-size: 20px;font-weight:bold;" value = 0 onclick = "add(0)">
+            <input type = 'button' style="width:45pt;height:45pt;font-size: 20px;font-weight:bold;" value = '.' onclick = "add('.')">
+            <input type = 'button' style="width:45pt;height:45pt;font-size: 20px;font-weight:bold;" value = '=' onclick = "merge()">  
+            <input type = 'button' style="width:45pt;height:45pt;font-size: 20px;font-weight:bold;" value = 'C' onclick = "clean()">  
+        </td>
+    </tr>
+  </table>  
+</body>
+</html>
+          
