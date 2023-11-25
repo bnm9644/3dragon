@@ -73,13 +73,13 @@ console.log(area);
     console.log(helloText); -> 위의 결과 값과 동일하게 - 문송합니다. 가 나옴
 
 
-    ★ 함수 선언식과 함수 표현식의 차이점 : 함수 선언식은 "Hoisting"이 가능,
+    ★ '함수 선언식'과 '함수 표현식'의 차이점 : '함수 선언식'은 "Hoisting"이 가능,
     -> Hoisting 이란? 
-    -> 함수 선언식으로 만들어진 함수들은 프로그램 실행 시 코드의 최상단으로 자동으로 끌어 올려짐
+    -> '함수 선언식'으로 만들어진 함수들은 프로그램 실행 시 코드의 최상단으로 자동으로 끌어 올려짐
        ex) Line 3에 함수 호출 했는데 함수 선언식은 Line 13에 있을때, 
            Line 13에 선언한 함수는 자동으로 호이스팅 되어 끌어 올려 정상적으로 실행 가능
       
-      함수 표현식은 Hoisting 이 이루어지지 않음, 함수가 직접적으로 선언되지 전까진 접근이 불가능함!
+      '함수 표현식'은 Hoisting 이 이루어지지 않음, 함수가 직접적으로 선언되지 전까진 접근이 불가능함!
       사용 하려면 변수담아 둔 뒤에 밑에서부터 사용
 
 
@@ -89,12 +89,51 @@ console.log(area);
     let hello = function () {                 let hello = () => {
       return "문송합니다";          =>           return "문송합니다";                  
     }                                         }                
-                                              function 지우고 소괄호 뒤에 '=>'' 기입
+                                              function 지우고 () 뒤에 '=>'' 기입
 
-
-    ★ 콜백함수
+    ★ 콜백함수(Callback Function) 
+    -> 어떤 다른 함수의 매개변수로 함수를 넘겨주는 행위
     
+    function checkMood (mood) {
+        if(mood === "good") {
+            sing(); 
+        } else {
+            cry(); 
+        }
+    }
+
+    function cry () {console.log("야아 기분좋다아~");}
+    function sing() {console.log("여긴 XX시티이~");}
+    function dance() {console.log("흔들어라잇!");}
+
+    checkMood ("good"); // sing 함수 발동 - 콘솔에 여긴 XX시티이~ 가 노출
+    checkMood ("sad");  // good 이 아니므로 else 가서 cry함수 발동, 콘솔에 야아 기분좋다가 노출
+
+    ★ Callback 함수
+    function checkMood (mood, goodCallback, badCallback) {
+        if(mood === "good") {
+           goodCallback(); -> 결과적으로 sing 함수 노출, 
+        } else {
+           badCallback(); -> cry 함수 노출,
+        }
+    }
+
+    function cry () {console.log("야아 기분좋다아~");}
+    function sing() {console.log("여긴 XX시티이~");}
+    function dance() {console.log("흔들어라잇!");}
+
+    checkMood ("sad", sing, cry); 
+    // checkMood 함수에서 badCallback 함수는 cry라는 함수를 호출...
+
+
+    ★ 함수 표현식의 개념을 이용하여 cry와 sing 이라는 함수 자체를 
+       각각 goodCallback 과 badCallback 이라는 매개변수로 값 담고 
+       sad에 해당하는 badCallback 의 매개변수인 cry 함수를 호출
+
+    함수의 파라미터로 함수 자체를 넘기는 행위!
+
+
 */ 
 
-
+    
 </script>
