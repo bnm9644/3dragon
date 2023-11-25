@@ -76,7 +76,50 @@ console.log(numA + numB);
    console.log(c); // 10
 
    // 5강) 조건문
+   let f =3;
 
+   if(f>=7) {
+      console.log("7 이상");
+   } else if (a>=5) {
+      console.log("5 이상");
+   } else {
+      console.log("5 이하");
+   }
 
+   let country = "ko";
+
+   // if(country === "ko") {
+   //    console.log("한국");
+   // } else if (country === "us") {
+   //    console.log("미국");
+   // } else if (country === "jp") {
+   //    console.log("일본");
+   // } else if (country === "cn") {
+   //    console.log("중국");
+   // } else {
+   //    console.log("미 분류")
+   // }
+
+   switch (country) {
+      case "ko" :
+         console.log ("한국");
+         break;
+
+      case "us" :
+         console.log ("미국");
+         break;
+         
+      case "jp" :
+         console.log ("일본");
+         break;
+
+      case "cn" :
+         console.log ("중국");
+         break;
+
+      default :
+         console.log ("미 분류");
+         break;
+   }
  
 </script>
