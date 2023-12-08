@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <style>
+        .input {
+            width : 50px;
+            height : 50px;
+            font-size: 40px;
+            text-align: center;
+        }
+    </style>    
+
+    <input class = "input">
+    <input class = "input">
+    <input class = "input">
+    <input class = "input">
+    <input class = "input">
+    <button>제출</button> <!-- 제출 버튼 누르면 비교 -->
+
+    <script type = "text/javascript">
+        var ans = 'abcde';
+        document.querySelector('button').addEventListener('click', 
+        function () {
+
+            var input = document.querySelectorAll('.input');
+
+            // 1. 위치까지 맞으면 정답 (초록칠)
+            for (var i = 0; i < 5; i++) {
+                if(input[i].value === ans[i]) {
+                    input[i].style.background = 'green';
+                } else if (ans.includes(input[i].value)) {
+                    input[i].style.background = 'yellow';
+                } else {
+                    input[i].style.background = 'grey';
+                }
+            }
+                        
+
+
+        }) //제출 버튼 지정 클릭 이벤트 시 지정 함수 실행
+
+
+    </script>
+
+</body>
+</html>
