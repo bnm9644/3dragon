@@ -16,12 +16,12 @@
         }
     </style>    
 
-    <input class = "input">
-    <input class = "input">
-    <input class = "input">
-    <input class = "input">
-    <input class = "input">
-    <button>제출</button> <!-- 제출 버튼 누르면 비교 -->
+    <input class = "input" maxlength= "1">
+    <input class = "input" maxlength= "1">
+    <input class = "input" maxlength= "1">
+    <input class = "input" maxlength= "1">
+    <input class = "input" maxlength= "1">
+    <button>제출</button> <!-- 제출 버튼 누르면 비교, maxlength 로 자릿수 입력 제한-->
 
     <script type = "text/javascript">
         var ans = ['apple','pasds','savor']; // 단어 리스트 배열
@@ -49,8 +49,17 @@
                 }
             }
                         
+            var template = `<div>   
+                            <input class = "input" maxlength = "1">
+                            <input class = "input" maxlength = "1">
+                            <input class = "input" maxlength = "1">
+                            <input class = "input" maxlength = "1">
+                            <input class = "input" maxlength = "1">
+                            </div>`;
 
-
+            document.querySelector('body').insertAdjacentHTML
+            ('beforeend', template);
+                        
         }) //제출 버튼 지정 클릭 이벤트 시 지정 함수 실행
 
 
