@@ -16,17 +16,17 @@
         }
     </style>    
 
-    <input class = "input" maxlength= "1">
-    <input class = "input" maxlength= "1">
-    <input class = "input" maxlength= "1">
-    <input class = "input" maxlength= "1">
-    <input class = "input" maxlength= "1">
+    <input class = "inputer" maxlength= "1">
+    <input class = "inputer" maxlength= "1">
+    <input class = "inputer" maxlength= "1">
+    <input class = "inputer" maxlength= "1">
+    <input class = "inputer" maxlength= "1">
     <button>제출</button> <!-- 제출 버튼 누르면 비교, maxlength 로 자릿수 입력 제한-->
 
     <script type = "text/javascript">
-        var ans = ['apple','pasds','savor']; // 단어 리스트 배열
-        var index = Math.floor(Math.random() * 3); // 단어 리스트 배열 갯수만큼 담기
-        var word = ans[index];        
+        let ans = ['apple','pasds','savor']; // 단어 리스트 배열
+        let numbers = Math.floor(Math.random() * 3); // 단어 리스트 배열 갯수만큼 담기
+        let word = ans[numbers];        
         
         /* 
            배열의 index 즉 0 ~ 2 : 3개 중 랜덤 지정
@@ -36,18 +36,18 @@
         document.querySelector('button').addEventListener('click', 
         function () {
 
-            var input = document.querySelectorAll('.input');
+            let inputer = document.querySelectorAll('.inputer');
 
             // 1. 위치까지 맞으면 정답 (초록칠)
-            for (var i = 0; i < 5; i++) {
-                if(input[i].value === word[i]) {
-                    input[i].style.background = 'green';
-                } else if (word.includes(input[i].value)) {
-                    input[i].style.background = 'yellow';
-                } else if (input[i].value === ''){
+            for (let i = 0; i < 5; i++) {
+                if(inputer[i].value === word[i]) {
+                    inputer[i].style.background = 'green';
+                } else if (word.includes(inputer[i].value)) {
+                    inputer[i].style.background = 'yellow';
+                } else if (inputer[i].value === ''){
                     alert('공백 발생');
                 } else {
-                    input[i].style.background = 'grey';
+                    inputer[i].style.background = 'grey';
                 }
 
                 /*
@@ -56,16 +56,16 @@
                 새로 단어를 비교 하기 위해 
                 기존 단어 비교한 영역은 class 삭제 처리
                 */
-                input[i].classList.remove('input');                
+                inputer[i].classList.remove('inputer');                
                 
             }
                         
-            var template = `<div>   
-                            <input class = "input" maxlength = "1">
-                            <input class = "input" maxlength = "1">
-                            <input class = "input" maxlength = "1">
-                            <input class = "input" maxlength = "1">
-                            <input class = "input" maxlength = "1">
+            let template = `<div>   
+                            <input class = "inputer" maxlength = "1">
+                            <input class = "inputer" maxlength = "1">
+                            <input class = "inputer" maxlength = "1">
+                            <input class = "inputer" maxlength = "1">
+                            <input class = "inputer" maxlength = "1">
                             </div>`;
 
             document.querySelector('body').insertAdjacentHTML
