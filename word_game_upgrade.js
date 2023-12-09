@@ -17,14 +17,14 @@
             for (let i = 0; i < 5; i++) {
                 if(inputer[i].value === word[i]) {
                     inputer[i].style.background = 'green';
-                } else if (word.includes(inputer[i].value)) {
-                    inputer[i].style.background = 'yellow';
-                } else if (inputer[i].value === ''){
+                }else if (inputer[i].value == ''){
                     alert('공백 발생');
+                    inputer[i].style.background = 'red';
+                } else if (word.includes(inputer[i].value)) {   // 포함의 이슈 , include = ''도 포함 상태, 정리 필요
+                    inputer[i].style.background = 'yellow';
                 } else {
                     inputer[i].style.background = 'grey';
-                }
-
+                }            
                 
                 /*
                 for문 돌려 단어 하나하나 씩 다 비교해보고 저렇게 처리 후 
