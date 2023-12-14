@@ -1,5 +1,3 @@
-<script type = "text/javascript">
-
 // 이정환이 한입 리액트 강의 Javascript 정리본 이므니다.
 // 나머지 정리 본 - 객체 (비원시 타입에 해당)
 /* 
@@ -167,5 +165,3 @@
     // join 
 */
 
-    
-</script>

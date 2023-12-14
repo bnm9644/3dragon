@@ -1,4 +1,4 @@
-<script type = "text/javascript">
+
 
 // 이정환이 한입 리액트 강의 Javascript 정리본 이므니다.
 // 조건문 업그레이드 
@@ -130,5 +130,3 @@ const topingCookies = ['바나나쿠키','블루베리쿠키','딸기쿠키','�
 
 const allCookies = [...noTopingCookies , ...topingCookies];
 // concat 함수와 같은 병합의 기능으로도 사용
-
-</script>

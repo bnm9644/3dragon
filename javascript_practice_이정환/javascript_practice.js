@@ -1,4 +1,4 @@
-<script type = "text/javascript">
+
 
 // 이정환이 한입 리액트 강의 Javascript 정리본 이므니다. 
 // 1~2 강) 
@@ -123,4 +123,3 @@ console.log(numA + numB);
          break;
    }
  
-</script>
