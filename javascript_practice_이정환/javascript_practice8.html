@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<script type = "text/javascript">
+
+// 이정환이 한입 리액트 강의 Javascript 정리본 이므니다. - Async , Await
+
+//async
+/*
+function hello() {
+  return 'hello';
+}
+*/
+
+function delay(ms) {
+    return new Promise((resolve) => {
+        setTimeout(resolve, ms)
+    })
+}
+
+async function helloAsync() { // async 선언하면 Promise 객체 자동으로 return 비동기 처리함수
+    
+    /*
+    return delay(3000).then(() => {
+        return "hello async"; // then의 결과 값
+    });
+    */
+
+    await delay(3000); // await을 비동기 함수 앞에 붙이게 되면 - 동기적인 함수 처럼 작동하게 됨 즉 return 뒤는 delay 함수가 끝날떄 까지 return 문은 작동 하지 않음
+                       // await 키워드는 async 키워드가 붙어 있어야만 사용가능
+    return "hello async";
+} 
+
+async function main() {
+    const res = await helloAsync()
+    console.log(res);
+}
+
+main();
+
+/*
+console.log(hello());
+console.log(helloAsync());
+*/
+
+// helloAsync().then((res)=> {console.log(res)});
+
+</script>
+</body>
+</html>
+
+
+

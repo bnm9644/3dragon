@@ -28,11 +28,11 @@ const age = 25; 후 age = 23; Error!
                                         // let array = [1,2,3,4];  
 */
 /* 템플릿 리터럴 방식 선언 - 중요*/
-let name2 = "리재명";                                        
-let name3 = "이낙지";
+let name2 = "안철수";                                        
+let name3 = "이건희";
                      
-console.log(`민주당 : ${name2}` ); // 백틱(`)으로 선언
-console.log(`민주당 : ${name3}` );                     
+console.log(`V3 : ${name2}` ); // 백틱(`)으로 선언
+console.log(`삼성 : ${name3}` );                     
 
 //boolean 형
 //undefined 형

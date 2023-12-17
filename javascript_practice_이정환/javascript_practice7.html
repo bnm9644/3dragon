@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<script type = "text/javascript">
+
+// 이정환이 한입 리액트 강의 Javascript 정리본 이므니다. - 콜백 지옥 방지, Promise
+
+/* 
+비동기 작업이 가질수 있는 3가지 상태 
+                    ★해결(resolve)  -   Fulfilled (성공)
+Pending (대기 상태)
+                    ★거부(reject)   -   Rejected  (실패)
+*/
+
+/*
+function isPositive (number, resolve, reject) {
+    setTimeout(() => {
+        if(typeof number === 'number') {
+            // 성공 ->  resolve
+            resolve(number >= 0? "양수":"음수");
+        } else {
+            // 실패 ->  reject
+            reject("주어진 값이 숫자 값이 아닙니다.")
+        }
+    },2000)
+}
+
+function isPositiveP (number) {
+    const executor = (resolve, reject) => { // 실행자
+        setTimeout(()=> {
+            if(typeof number === 'number') {
+                // 성공 ->  resolve
+                console.log(number);
+                resolve(number >= 0? "양수":"음수");
+            } else {
+                // 실패 ->  reject
+                reject("주어진 값이 숫자 값이 아닙니다.")
+            }   
+        },2000)
+    };
+
+    const asyncTask = new Promise(executor); // Promise 객체의 then , catch! 사용
+    return asyncTask;
+}
+
+const res = isPositiveP(129);
+
+res.then((res) => {
+    console.log("작업 성공 :", res);
+})
+.catch((err) => {
+    console.log("작업 실패 :", err);
+});
+
+/*
+isPositive(10, 
+(res) => {
+    console.log('성공적으로 수행됨 :' + res);
+}, 
+(err) => {
+    console.log('실패 하였음' + err);
+});
+
+*/
+
+// 콜백 지옥 탈출 하는 법
+function taskA (a,b) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const res = a+b;
+            resolve(res);
+        }, 3000);
+    });
+} 
+
+function taskB(a) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const res = a * 2;
+            resolve(res);
+        }, 1000);
+    });
+}
+
+function taskC(a) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const res = a * -1;
+            resolve(res);
+        }, 2000);
+    });
+}
+
+taskA(5,1).then((a_res)=> {
+    console.log("A RESULT :". a_res);
+    taskB(a_res).then((b_res) => {
+     console.log("B RESULT :". b_res);
+    taskC(b_res).then((c_res) => {
+        console.log("C RESULT :". c_res);
+    }); 
+  });
+});
+</script>
+</body>
+</html>
+
+
+

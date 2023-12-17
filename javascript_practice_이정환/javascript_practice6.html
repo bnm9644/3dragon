@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<script type = "text/javascript">
+
+// 이정환이 한입 리액트 강의 Javascript 정리본 이므니다. - 동기 vs 비동기
+
+/* 
+    동기 방식
+    Ex) taskA , taskB , taskC 함수 존재 실행    
+
+    ★ javascript 는 싱글 스레드 수행 방식임!
+
+    코드가 작성된 순서대로 작업을 처리 
+    '이전 작업 진행중일떄는 다음 작업을 수행하지 않고 기다림' 
+    처음 작업을 시작할떄는 그 작업이 끝날떄 까지 다른 작업을 할수 없게 블로킹 - 블로킹 방식이라 부른다.
+    이런 방식을 ★동기 방식★ 처리라 부른다.
+    (블로킹 방식)
+    
+    taskA - 0.3초 -> taskB - 0.5초 -> taskC - 0.2초 
+    
+    Thread - taskA - taskB - taskC 순, 실행
+    
+    Thread는 여기서 task 세 함수를 실행하게 해주는 일꾼의 역할임.
+
+    단 문제는, 하나의 작업이 오래 걸릴 시 나머지 뒤의 작업은 못함, 전반적인 흐름이 느려짐
+
+    대안, 멀티 스레드 방식
+*/
+
+/* 
+    비동기 방식 
+    
+    싱글 스레드 방식을 이용, 여러 개 작업을 '동시에' 실행 시킴
+    위의 함수에서 taskA - taskB - taskC 가 동일 존재 시    
+    여러 개의 작업을 동시에 실행 - 먼저 작성된 코드 결과를 안 기다리고 바로 실행
+    이런 방식을 ★'비'동기 방식★ 처리라 부른다.
+    (논 블로킹 방식)
+*/
+
+/*
+function taskA () {
+    //console.log ('A 작업 끝');    
+    setTimeout (()=> {
+        console.log("taskA 함수 종료");
+    }, 2000);
+};
+
+tsakA(); 
+console.log('코드 작업 끝');
+*/
+
+// 결과 값은 taskA 함수부터 처리 되고 console.log - 코드 작업 끝이 처리
+// 그러나 내장 비동기 함수인, setTimeout을 사용하면 , 순서 따위 없음
+// ★ setTimeout (콜백함수, ms) 
+// console.log(코드 작업 끝) 부터 나오고 뒤에 task 함수 실행되게 끔 설명을 위해 설정함
+
+function taskA (a,b, callb) {
+    setTimeout (() => {
+        const res = a+b; //지역 상수
+        callb(res);
+    }, 3000)
+}
+
+function taskB (a, callc) {
+    setTimeout (()=> {
+        const res = a * 2;
+        callc(res);
+    }, 1000);
+}
+
+function taskC (a, calld) {
+    setTimeout (()=> {
+        const res = a * -1;
+        calld(res);
+    }, 2000);
+}
+
+/*
+taskA (3,4, (res) => {
+    console.log('A result :' + res); //결과값 res 를 Parameter로 받아온 뒤 콜백함수인 callb 함수를 받아와 소환하면 
+                                     // A result : 7 이 taskA 함수 실행 전 '코드 끝' 이 먼저 나오고 나서 나옴
+});
+
+taskB (7, (res) => {
+    console.log('B result :' + res);
+});
+
+taskC (14, (res) => {
+    console.log('C result :' + res);
+});
+
+*/
+
+taskA (4,5, (a_res) => {
+    console.log("A RESULT :" + a_res);
+    taskB(a_res, (b_res) => {
+        console.log("B RESULT :" + b_res);
+        taskC(b_res, (c_res) => {
+            console.log("C RESULT :" + c_res);
+        })
+    })   
+});
+console.log("코드 끝");
+
+// javascript Engine - 동기 방식 설명과 예시
+/*
+    Heap 과 Call stack 으로 구성
+
+    Heap은 메모리 할당,
+    Call stack은 코드 실행 담당
+                                                Heap            Call Stack     - 프링글스 통                                                  
+    function one() return 1;                                    4) one();   5) return 1 하고 Out!
+
+    function two() return one() + 1;                            3) two ();  6) return 2 하고 Out!                                                            
+
+    function three () return two() + 1;                         2) three (); 7) return 3 하고 Out!                                                     
+
+    console.log (three());                                      1) Main Context (프로그램 실행 순간) 8) Out!
+
+                                                                1) ~ 8) 순 까지 하고 종료
+*/                                                              
+
+/*  
+
+function asyncAdd (a,b cb) {                       Heap        Call Stack                                                                                                                
+    setTimeout(() => {                                                                              
+        const res = a + b;                                    3) setTimeOut() - cb() - 비동기 함수 이기 떄문에 Web API로 넘김                                                                          
+        cb(res);                                              2) asyncAdd ()  4) asyncAdd () - Out                                                        
+    }, 3000);                                                 1) Main Context 5) setTimeOut() - Out -> cb() 는 Callback Queue 로 간다
+}                                                                                               
+
+                                                              Web APIs - 3) setTimeOut() - cb() // 3초 대기                              
+                                                        Callback Queue - 6) cb() - Event loop 라는 게, Main Context 제외한 다른 함수가 남아 있지 않게 확인        
+                                                                         7) Main Context 제거
+                                                        1) ~ 7) 순
+
+asyncAdd (1,3, (res) => {                                                                                                   
+    console.log ("결과 : " + res);                                                                                                          
+});                                                                                                                         
+
+*/
+
+
+</script>
+</body>
+</html>
+
+
+
