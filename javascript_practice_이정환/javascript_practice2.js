@@ -5,8 +5,7 @@
 // 1~2 강) 
 console.log('hello');
 
-let age = 32; 
-console.log(age);
+let age = 32; console.log(age);
 
 /* 
 변수명은 기호와 사용 불가능, 단 언더바만 사용 가능
