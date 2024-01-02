@@ -1,4 +1,8 @@
 
+// document.getElementByid(id);
+// document.getElementsByName(name);
+// document.querySelector("css 선택자");
+
 
 // 이정환이 한입 리액트 강의 Javascript 정리본 이므니다. 
 // 1~2 강) 
