@@ -130,3 +130,7 @@ const topingCookies = ['바나나쿠키','블루베리쿠키','딸기쿠키','�
 
 const allCookies = [...noTopingCookies , ...topingCookies];
 // concat 함수와 같은 병합의 기능으로도 사용
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9871e2a86f75aeb03705098dce2a9dfb7ff8094a
