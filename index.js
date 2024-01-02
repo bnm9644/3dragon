@@ -14,5 +14,5 @@ console.log(calc.sub(10,2));
 
 // CLI : Command Line Interface : 명령을 직접 텍스트로 타이핑하여 명령 내림, 명령어를 입력하여 명령
 
-// console 찍을 시, 개발자 도구의 콘솔 탭에서만 확인 가능했늗네
+// console 찍을 시, 개발자 도구의 콘솔 탭에서만 확인 가능했으나
 // node.js는 실행된 터미널에 콘솔이 바로 찍힘
