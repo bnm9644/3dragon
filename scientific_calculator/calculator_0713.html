@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    #table {
+      border: solid 3px black;
+      background-color: silver;
+      height: 600px;
+      margin: 100px;
+    }
+
+    tr {
+      display: flex;
+      margin: 20px 15px;
+    }
+
+    #total {
+      width: 310px;
+      height: 50px;
+    }
+
+    input {
+      width: 55px;
+      height: 60px;
+    }
+  </style>
+  <script>
+    var num = 0;
+    var kiho; // 기호
+    var flag = false; // 0값 나타내는 플래그 필드
+    var Anum = 0;
+    var Cnum = 0; //바꿀 숫자
+
+    function backDo() {
+      total.value = total.value.substring(0, total.value.length - 1);
+      // substring 으로 0부터 value 길이에서 -1 한 만큼의 길이를 출력한다
+      if (total.value.length == 0) {
+        clean();
+      }
+    }
+
+    function add(a) {
+      if (flag == false) {
+        total.value = '';
+        flag = true;
+      }
+      total.value += a;
+    } //추가 뒤 Anum 저장, Bnum 값 입력, = a와b의 연산 값,
+
+    function cal(b) {
+      Anum = document.getElementById('total').value;
+      num = Anum; // 기호 삽입 전 숫자 저장!
+      kiho = b;
+      return (total.value = '');
+    }
+    // cal 누르는 동시에, total.value 값 사라지고, Anum 값 저장
+
+    function ce() {
+      total.value = '';
+      Cnum = document.getElementById('total').value; //바꿀 앞 숫자
+    }
+
+    function merge() {
+      Cnum = Anum;
+      var Bnum = document.getElementById('total').value;
+
+      var result; //기호 삽입 후, 계산 결과 최종 값
+      switch (kiho) {
+        case '+':
+          result = Number(num) + Number(Bnum);
+          //document.getElementById("total").value = result;
+          total.value = result;
+          break;
+        case '-':
+          result = Number(num) - Number(Bnum);
+          //document.getElementById("total").value = result;
+          total.value = result;
+          break;
+        case '*':
+          result = Number(num) * Number(Bnum);
+          //document.getElementById("total").value = result;
+          total.value = result;
+          break;
+        case '/':
+          result = Number(num) / Number(Bnum);
+          //document.getElementById("total").value = result;
+          total.value = result;
+          break;
+      }
+    }
+
+    function clean() {
+      if (flag == true) {
+        flag = false;
+        document.getElementById('total').value = '0';
+      }
+    }
+
+    function plminus() {
+      if (flag == true) {
+        flag = false;
+        total.value = -1 * total.value;
+        return total.value;
+      }
+    }
+
+    function tan() {
+      if (total.value.length < 19) {
+        // 자릿수 제한 - 19
+        total.value = Math.tan((total.value * 3.141592) / 180);
+      } else {
+        alert('자리수가 너무 큽니다.');
+        clean();
+      }
+      return total.value;
+    }
+
+    function sin() {
+      if (total.value.length < 19) {
+        // 자릿수 제한 - 19
+        total.value = Math.sin((total.value * 3.141592) / 180);
+      } else {
+        alert('자리수가 너무 큽니다.');
+        clean();
+      }
+      return total.value;
+    }
+
+    function cos() {
+      if (total.value.length < 19) {
+        // 자릿수 제한 - 19
+        total.value = Math.cos((total.value * 3.141592) / 180);
+      } else {
+        alert('자리수가 너무 큽니다.');
+        clean();
+      }
+      return total.value;
+    }
+
+    function abs() {
+      if (total.value.length < 19) {
+        // 자릿수 제한 - 19
+        total.value = Math.abs(total.value);
+      }
+      return total.value;
+    }
+
+    function tenpow() {
+      if (total.value.length < 19) {
+        // 자릿수 제한 - 19
+        total.value = Math.pow(10, total.value);
+      }
+      return total.value;
+    }
+
+    function twopow() {
+      if (total.value.length < 22) {
+        // 자릿수 제한 - 22
+        total.value = Math.pow(2, total.value);
+      }
+      return total.value;
+    }
+
+    function pactorial() {
+      let result = 1;
+      for (let i = total.value; i >= 1; i--) {
+        result = result * i;
+        total.value = result;
+      }
+      return result;
+    }
+
+    function boon() {
+      if (total.value.length < 19) {
+        // 자릿수 제한 - 22
+        total.value = 1 / total.value;
+      } else {
+        alert('자리수가 너무 큽니다.');
+        clean();
+      }
+      return total.value;
+    }
+
+    function root() {
+      if (total.value.length < 19) {
+        // 자릿수 제한 - 22
+        total.value = Math.sqrt(total.value);
+      } else {
+        alert('자리수가 너무 큽니다.');
+        clean();
+      }
+      return total.value;
+    }
+
+    function jegob() {
+      total.value = Math.pow(total.value, 2);
+      return total.value;
+    }
+  </script>
+</head>
+
+<body>
+  <table id="table">
+    <tr>
+      <td>
+        <input type="text" id="total" value="0" style="font-size: 24px; font-weight: bold" />
+      </td>
+    </tr>
+
+    <tr></tr>
+    <tr>
+      <td>
+        <input type="button" style="width: 45pt; height: 45pt; font-size: 20px; font-weight: bold;" value="tan" onclick="tan()" />
+        <input type="button" style="width: 45pt; height: 45pt; font-size: 20px; font-weight: bold;" value="sin" onclick="sin()" />
+        <input type="button" style="width: 45pt; height: 45pt; font-size: 20px; font-weight: bold;" value="cos" onclick="cos()" />
+        <input type="button" style="width: 45pt; height: 45pt; font-size: 20px; font-weight: bold;" value="abs" onclick="abs()" />
+        <input type="button" style="width: 45pt; height: 45pt; font-size: 20px; font-weight: bold;" value="!" onclick="pactorial()" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <input type="button" style="width: 45pt; height: 45pt; font-size: 20px; font-weight: bold;" value="1/n" onclick="boon()" />
+        <input type="button" style="width: 45pt; height: 45pt; font-size: 20px; font-weight: bold;" value="x²" onclick="jegob()" />
+        <input type="button" style="width: 45pt; height: 45pt; font-size: 20px; font-weight: bold;" value="√" onclick="root()" />
+        <input type="button" style="width: 45pt; height: 45pt; font-size: 20px; font-weight: bold;" value="10n" onclick="tenpow()" />
+        <input type="button" style="width: 45pt; height: 45pt; font-size: 20px; font-weight: bold;" value="2n" onclick="twopow()" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <input type="button" style="width: 45pt; height: 45pt; font-size: 20px; font-weight: bold;" value="7" onclick="add(7)" />
+        <input type="button" style="width: 45pt; height: 45pt; font-size: 20px; font-weight: bold;" value="8" onclick="add(8)" />
+        <input type="button" style="width: 45pt; height: 45pt; font-size: 20px; font-weight: bold;" value="9" onclick="add(9)" />
+        <input type="button" style="width: 45pt; height: 45pt; font-size: 20px; font-weight: bold;" value="X" onclick="cal('*')" />
+        <input type="button" style="width: 45pt; height: 45pt; font-size: 20px; font-weight: bold;" value="CE" onclick="ce()" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <input type="button" style="width: 45pt; height: 45pt; font-size: 20px; font-weight: bold;" value="4" onclick="add(4)" />
+        <input type="button" style="width: 45pt; height: 45pt; font-size: 20px; font-weight: bold;" value="5" onclick="add(5)" />
+        <input type="button" style="width: 45pt; height: 45pt; font-size: 20px; font-weight: bold;" value="6" onclick="add(6)" />
+        <input type="button" style="width: 45pt; height: 45pt; font-size: 20px; font-weight: bold;" value="-" onclick="cal('-')" />
+        <input type="button" style="width: 45pt; height: 45pt; font-size: 20px; font-weight: bold;" value="back" onclick="backDo()" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <input type="button" style="width: 45pt; height: 45pt; font-size: 20px; font-weight: bold;" value="1" onclick="add(1)" />
+        <input type="button" style="width: 45pt; height: 45pt; font-size: 20px; font-weight: bold;" value="2" onclick="add(2)" />
+        <input type="button" style="width: 45pt; height: 45pt; font-size: 20px; font-weight: bold;" value="3" onclick="add(3)" />
+        <input type="button" style="width: 45pt; height: 45pt; font-size: 20px; font-weight: bold;" value="+" onclick="cal('+')" />
+        <input type="button" style="width: 45pt; height: 45pt; font-size: 20px; font-weight: bold;" value="+/-" onclick="plminus()" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <input type="button" style="width: 45pt; height: 45pt; font-size: 20px; font-weight: bold;" value="/" onclick="cal('/')" />
+        <input type="button" style="width: 45pt; height: 45pt; font-size: 20px; font-weight: bold;" value="0" onclick="add(0)" />
+        <input type="button" style="width: 45pt; height: 45pt; font-size: 20px; font-weight: bold;" value="." onclick="add('.')" />
+        <input type="button" style="width: 45pt; height: 45pt; font-size: 20px; font-weight: bold;" value="=" onclick="merge()" />
+        <input type="button" style="width: 45pt; height: 45pt; font-size: 20px; font-weight: bold;" value="C" onclick="clean()" />
+      </td>
+    </tr>
+  </table>
+</body>
+
+</html>
